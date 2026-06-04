@@ -41,8 +41,8 @@ export default async function ResignationDeskPage() {
     currentFiling.status === 'on hold';
 
   return (
-    <div className="w-full max-w-[800px] mx-auto p-4 space-y-8">
-      <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
+    <div className="w-full max-w-[800px] mx-auto space-y-6 sm:space-y-8">
+      <div className="bg-white p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
         <h3 className="font-black text-[#2D2D2D] text-lg mb-2">Formal Resignation Desk</h3>
         <p className="text-[10px] text-gray-400 font-bold uppercase mb-6 tracking-tight">
           File personnel operational separation parameters
@@ -85,8 +85,8 @@ export default async function ResignationDeskPage() {
           </form>
         ) : (
           /* ACTIVE CARD BLOCK: Displays if status is currently pending or approved */
-          <div className="p-6 bg-[#FAF9F6] border border-[#F5F1EA] rounded-[1.5rem] text-xs space-y-4">
-            <div className="flex justify-between items-center">
+          <div className="p-4 sm:p-6 bg-[#FAF9F6] border border-[#F5F1EA] rounded-[1.5rem] text-xs space-y-4">
+            <div className="flex flex-col gap-2 sm:flex-row sm:justify-between sm:items-center">
               <span className="text-gray-400 font-black uppercase text-[10px] tracking-wider">Filing Status</span>
               <span className={`px-3 py-1 rounded-full font-black uppercase text-[10px] border ${
                 currentFiling.status === 'approved' ? 'bg-green-50 text-green-700 border-green-100' :
@@ -130,10 +130,10 @@ export default async function ResignationDeskPage() {
             <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Filing Log History</p>
             <div className="space-y-2">
               {structuralHistory.map((historyItem) => (
-                <div key={historyItem.id} className="p-4 bg-white border border-[#F5F1EA] rounded-xl flex justify-between items-center text-xs">
+                <div key={historyItem.id} className="p-4 bg-white border border-[#F5F1EA] rounded-xl flex flex-col gap-3 text-xs sm:flex-row sm:justify-between sm:items-center">
                   <div>
                     <p className="font-bold text-[#2D2D2D]">Exit: <span className="font-mono">{historyItem.last_working_day}</span></p>
-                    <p className="text-[10px] text-gray-400 truncate max-w-[300px] mt-0.5">"{historyItem.reason}"</p>
+                    <p className="text-[10px] text-gray-400 truncate max-w-full sm:max-w-[300px] mt-0.5">"{historyItem.reason}"</p>
                   </div>
                   <span className={`px-2 py-0.5 rounded text-[9px] font-black uppercase border ${
                     historyItem.status === 'approved' ? 'bg-green-50 text-green-700 border-green-100' :

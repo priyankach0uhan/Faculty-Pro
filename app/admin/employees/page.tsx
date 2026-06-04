@@ -28,7 +28,7 @@ export default async function EmployeesPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-end">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-black text-[#2D2D2D] tracking-tight">Faculty Directory</h1>
           <p className="text-xs text-gray-400 font-medium">Manage and monitor all appointed educational staff.</p>

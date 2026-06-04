@@ -55,14 +55,14 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
       {/* 1. MAIN DIRECTORY GRID TABLE AS SEEN IN IMAGE_9283AA.PNG */}
       <div className="bg-white border border-[#F5F1EA] rounded-[2rem] overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[760px] text-left border-collapse">
             <thead>
               <tr className="border-b border-[#F5F1EA] bg-[#FAF9F6] text-[10px] font-black text-gray-400 uppercase tracking-widest">
-                <th className="p-6">Employee ID</th>
-                <th className="p-6">Full Name</th>
-                <th className="p-6">Department</th>
-                <th className="p-6">Role</th>
-                <th className="p-6">Status</th>
+                <th className="p-4 sm:p-6">Employee ID</th>
+                <th className="p-4 sm:p-6">Full Name</th>
+                <th className="p-4 sm:p-6">Department</th>
+                <th className="p-4 sm:p-6">Role</th>
+                <th className="p-4 sm:p-6">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#F5F1EA]">
@@ -72,22 +72,22 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
                   onClick={() => handleRowClick(staff)}
                   className="hover:bg-[#FAF9F6]/50 cursor-pointer transition-all group"
                 >
-                  <td className="p-6 font-mono text-xs text-amber-800 font-bold group-hover:text-amber-900">
+                  <td className="p-4 sm:p-6 font-mono text-xs text-amber-800 font-bold group-hover:text-amber-900">
                     {staff.employee_id}
                   </td>
-                  <td className="p-6">
+                  <td className="p-4 sm:p-6">
                     <div className="font-black text-sm text-[#2D2D2D]">{staff.full_name}</div>
                     <div className="text-[10px] text-gray-400 font-medium">{staff.email}</div>
                   </td>
-                  <td className="p-6 text-xs font-bold text-gray-500 uppercase tracking-wide">
+                  <td className="p-4 sm:p-6 text-xs font-bold text-gray-500 uppercase tracking-wide">
                     {staff.department || "—"}
                   </td>
-                  <td className="p-6">
+                  <td className="p-4 sm:p-6">
                     <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-md bg-gray-100 text-gray-600">
                       {staff.role}
                     </span>
                   </td>
-                  <td className="p-6">
+                  <td className="p-4 sm:p-6">
                     <span className="inline-flex items-center gap-1.5 text-xs font-bold text-green-600">
                       <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
                       {staff.status || "ACTIVE"}
@@ -102,9 +102,9 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
 
       {/* 2. SLIDE-OUT / POP-UP MANAGEMENT CONSOLE MODAL */}
       {selectedStaff && (
-        <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white border border-[#F5F1EA] rounded-[2rem] w-full max-w-lg shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-            <div className="p-6 bg-[#FAF9F6] border-b border-[#F5F1EA] flex items-center justify-between">
+        <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+          <div className="bg-white border border-[#F5F1EA] rounded-[1.5rem] sm:rounded-[2rem] w-full max-w-lg max-h-[92vh] shadow-xl overflow-y-auto animate-in fade-in zoom-in-95 duration-200">
+            <div className="p-4 sm:p-6 bg-[#FAF9F6] border-b border-[#F5F1EA] flex items-center justify-between gap-4">
               <div>
                 <h3 className="font-black text-base text-[#2D2D2D]">Modify Profile Parameters</h3>
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-0.5">
@@ -119,7 +119,7 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
               </button>
             </div>
 
-            <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleFormSubmit} className="p-4 sm:p-6 space-y-4">
               {errorMessage && (
                 <div className="p-3 bg-red-50 border border-red-100 text-red-600 rounded-xl text-xs font-bold">
                   Error: {errorMessage}
@@ -148,7 +148,7 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <label className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Department</label>
                   <input 
@@ -174,28 +174,28 @@ export function FacultyTableManager({ initialData }: { initialData: any[] }) {
                 </div>
               </div>
 
-              <div className="flex items-center justify-between border-t border-[#F5F1EA] pt-6 mt-6">
+              <div className="flex flex-col gap-3 border-t border-[#F5F1EA] pt-6 mt-6 sm:flex-row sm:items-center sm:justify-between">
                 <button
                   type="button"
                   onClick={executeDeletion}
                   disabled={isSubmitting}
-                  className="px-5 py-3 bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all disabled:opacity-50"
+                  className="w-full px-5 py-3 bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all disabled:opacity-50 sm:w-auto"
                 >
                   🛑 Delete Profile
                 </button>
 
-                <div className="flex items-center gap-2">
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
                   <button
                     type="button"
                     onClick={() => setSelectedStaff(null)}
-                    className="px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all"
+                    className="w-full px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-500 rounded-xl text-[11px] font-black uppercase tracking-wider transition-all sm:w-auto"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-5 py-3 bg-[#2D2D2D] hover:bg-black text-white rounded-xl text-[11px] font-black uppercase tracking-wider transition-all shadow-md disabled:opacity-50"
+                    className="w-full px-5 py-3 bg-[#2D2D2D] hover:bg-black text-white rounded-xl text-[11px] font-black uppercase tracking-wider transition-all shadow-md disabled:opacity-50 sm:w-auto"
                   >
                     {isSubmitting ? "Saving..." : "Save Changes"}
                   </button>

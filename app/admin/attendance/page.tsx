@@ -99,22 +99,22 @@ export default function AttendancePage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-[#F5F1EA] pb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-[#F5F1EA] pb-6">
         <div>
           <h1 className="text-2xl font-black text-[#2D2D2D]">Live Faculty Duty Matrix</h1>
           <p className="text-xs text-gray-400 font-medium mt-1">
             Connected Directly to Live Supabase Backend Tables.
           </p>
         </div>
-        <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-[#F5F1EA] shadow-sm">
+        <div className="flex w-full items-center gap-2 bg-white px-4 py-2 rounded-xl border border-[#F5F1EA] shadow-sm sm:w-auto">
           <span className="text-lg">📅</span>
           <span className="text-xs font-bold text-gray-600">{today}</span>
         </div>
       </div>
 
       {/* Filters UI */}
-      <div className="bg-white p-4 rounded-2xl border border-[#F5F1EA] shadow-sm flex flex-col md:flex-row gap-3 items-center justify-between">
-        <div className="relative w-full md:w-96">
+      <div className="bg-white p-4 rounded-2xl border border-[#F5F1EA] shadow-sm flex flex-col lg:flex-row gap-3 lg:items-center justify-between">
+        <div className="relative w-full lg:w-96">
           <span className="absolute left-3 top-2.5 text-gray-400 text-sm">🔍</span>
           <input
             type="text"
@@ -125,7 +125,7 @@ export default function AttendancePage() {
           />
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+        <div className="flex flex-col sm:flex-row gap-2 w-full lg:w-auto">
           <select
             value={deptFilter}
             onChange={(e) => setDeptFilter(e.target.value)}
@@ -152,16 +152,16 @@ export default function AttendancePage() {
       </div>
 
       {/* Main Framework Table Viewport */}
-      <div className="bg-white rounded-[2.5rem] border border-[#F5F1EA] overflow-hidden shadow-sm">
+      <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] overflow-hidden shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full min-w-[860px] text-left border-collapse">
             <thead>
               <tr className="bg-[#FAF9F6] border-b border-[#F5F1EA] text-[10px] uppercase font-black text-gray-400 tracking-wider">
-                <th className="p-6">Database Key</th>
-                <th className="p-6">Faculty Member</th>
-                <th className="p-6">Department Cluster</th>
-                <th className="p-6">Current Status</th>
-                <th className="p-6 text-right">Administrative Override</th>
+                <th className="p-4 sm:p-6">Database Key</th>
+                <th className="p-4 sm:p-6">Faculty Member</th>
+                <th className="p-4 sm:p-6">Department Cluster</th>
+                <th className="p-4 sm:p-6">Current Status</th>
+                <th className="p-4 sm:p-6 text-right">Administrative Override</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#FAF9F6]">
@@ -169,15 +169,15 @@ export default function AttendancePage() {
                 const currentStatus = person.attendance?.[0]?.status || "Absent";
                 return (
                   <tr key={person.id} className="hover:bg-[#FFFDF8] transition-colors">
-                    <td className="p-6 font-mono font-bold text-sm text-[#9B7E5A]">{person.employee_id}</td>
-                    <td className="p-6 font-black text-sm text-[#2D2D2D]">
+                    <td className="p-4 sm:p-6 font-mono font-bold text-sm text-[#9B7E5A]">{person.employee_id}</td>
+                    <td className="p-4 sm:p-6 font-black text-sm text-[#2D2D2D]">
                       {person.full_name}
                       {isUpdating === person.id && (
                         <span className="text-[10px] text-[#7A8F66] ml-2 animate-pulse font-bold">(Syncing...)</span>
                       )}
                     </td>
-                    <td className="p-6 text-xs text-gray-500 font-semibold">{person.department}</td>
-                    <td className="p-6">
+                    <td className="p-4 sm:p-6 text-xs text-gray-500 font-semibold">{person.department}</td>
+                    <td className="p-4 sm:p-6">
                       <span
                         className={`inline-flex px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-wide border ${
                           currentStatus === "Present"
@@ -192,7 +192,7 @@ export default function AttendancePage() {
                         {currentStatus}
                       </span>
                     </td>
-                    <td className="p-6 text-right relative" onClick={(e) => e.stopPropagation()}>
+                    <td className="p-4 sm:p-6 text-right relative" onClick={(e) => e.stopPropagation()}>
                       <div className="inline-block">
                         <button
                           onClick={(e) => {

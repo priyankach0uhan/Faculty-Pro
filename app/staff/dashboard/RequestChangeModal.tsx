@@ -48,15 +48,15 @@ export default function RequestChangeModal({ employeeId, facultyName }: RequestC
       {/* Trigger Open Element */}
       <button
         onClick={handleOpenModal}
-        className="px-5 py-3 bg-[#2D2D2D] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-[0.98]"
+        className="w-full px-5 py-3 bg-[#2D2D2D] text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-black transition-all active:scale-[0.98] sm:w-auto"
       >
         Request Calendar Correction
       </button>
 
       {/* Modal View overlay wrapper background frame */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[100] p-4 animate-fade-in">
-          <div className="bg-white w-full max-w-md rounded-[2.5rem] border border-[#F5F1EA] shadow-2xl overflow-hidden relative p-8 transition-all">
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[100] p-3 sm:p-4 animate-fade-in">
+          <div className="bg-white w-full max-w-md max-h-[92vh] rounded-[1.5rem] sm:rounded-[2.5rem] border border-[#F5F1EA] shadow-2xl overflow-y-auto relative p-5 sm:p-8 transition-all">
             
             {/* Direct Close Icon Anchor */}
             <button

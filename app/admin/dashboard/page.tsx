@@ -45,9 +45,9 @@ export default async function AdminDashboard() {
   const attendanceMap = new Map(attendanceLogs.map(log => [log.employee_id, log.status]));
 
   return (
-    <div className="space-y-8 w-full">
+    <div className="space-y-6 sm:space-y-8 w-full">
       {/* METRIC CARDS SECTION */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6">
         <MetricCard label="Total Staff Appointed" value={totalStaff || 0} sub="Across Appointed Sectors" icon="👥" />
         <MetricCard 
           label="Present Today" 
@@ -63,9 +63,10 @@ export default async function AdminDashboard() {
       <RequestReviewDesk />
 
       {/* LIVE FACULTY DUTY MATRIX */}
-      <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
+      <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
         <h3 className="font-black text-[#2D2D2D] text-lg mb-6">Live Faculty Duty Matrix</h3>
-        <table className="w-full text-left">
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[640px] text-left">
           <thead>
             <tr className="text-[10px] font-black text-gray-400 uppercase tracking-widest border-b border-[#F5F1EA]">
               <th className="pb-4">Faculty ID</th>
@@ -115,6 +116,7 @@ export default async function AdminDashboard() {
             )}
           </tbody>
         </table>
+        </div>
       </div>
     </div>
   );
@@ -122,9 +124,9 @@ export default async function AdminDashboard() {
 
 function MetricCard({ label, value, sub, icon, color = "text-[#7A8F66]" }: MetricCardProps) {
   return (
-    <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm flex flex-col justify-between h-48">
+    <div className="bg-white p-5 sm:p-6 lg:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm flex flex-col justify-between min-h-40 sm:h-48">
       <div className="flex justify-between items-start">
-        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest max-w-[100px]">{label}</p>
+        <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest max-w-[12rem] sm:max-w-[100px]">{label}</p>
         <span className="text-xl opacity-20">{icon}</span>
       </div>
       <div>

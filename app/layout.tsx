@@ -1,9 +1,15 @@
 import React from "react";
+import type { Viewport } from "next";
 import "./globals.css"; 
 
 export const metadata = {
   title: "Faculty Management System",
   description: "Enterprise Suite Portal",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

@@ -142,7 +142,7 @@ export function LoginForm() {
                 required
               />
             </div>
-            <div className="flex gap-4 pt-2">
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:gap-4">
               <button
                 type="button"
                 onClick={() => setView("login")}

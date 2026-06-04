@@ -59,13 +59,13 @@ export default async function StaffDashboard() {
   const hasMarkedToday = attendanceLogs.some((log) => log.work_date === currentDate);
 
   return (
-    <div className="w-full max-w-[1300px] mx-auto space-y-8 block">
+    <div className="w-full max-w-[1300px] mx-auto space-y-6 sm:space-y-8 block">
       
       {/* IDENTITY BANNER HERO */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
-        <div className="lg:col-span-8 bg-white p-6 rounded-[2rem] border border-[#F5F1EA] shadow-sm flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-black text-[#2D2D2D] tracking-tight">Welcome back, {profile.full_name}</h1>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 w-full">
+        <div className="lg:col-span-8 bg-white p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] border border-[#F5F1EA] shadow-sm flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-2xl font-black text-[#2D2D2D] tracking-tight break-words">Welcome back, {profile.full_name}</h1>
             <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mt-1">
               Department of {profile.department} • <span className="font-mono text-[#9B7E5A]">{profile.employee_id}</span>
             </p>
@@ -77,17 +77,17 @@ export default async function StaffDashboard() {
           />
         </div>
         
-        <div className="lg:col-span-4 bg-[#7A8F66] p-6 rounded-[2rem] text-white shadow-md shadow-[#7A8F66]/10 flex flex-col justify-center">
+        <div className="lg:col-span-4 bg-[#7A8F66] p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] text-white shadow-md shadow-[#7A8F66]/10 flex flex-col justify-center">
           <p className="text-[9px] font-black opacity-60 uppercase tracking-widest">Administrative Notice</p>
           <p className="text-xs font-bold mt-1 line-clamp-2">{messages.data?.[0]?.content || "Your system profile is fully synchronized."}</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
         {/* LEFT COMPARTMENT */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm text-center">
+          <div className="bg-white p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm text-center">
             <h3 className="font-black text-[#2D2D2D] text-lg mb-2">Daily Registry</h3>
             <p className="text-[10px] text-gray-400 font-bold uppercase mb-6">Mark presence to avoid absence record</p>
             
@@ -106,11 +106,11 @@ export default async function StaffDashboard() {
             </form>
           </div>
 
-          <div className="bg-white p-6 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm space-y-4">
+          <div className="bg-white p-4 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm space-y-4">
             <h3 className="font-black text-[#2D2D2D] text-xs uppercase tracking-wider px-2">Leave Applications Log</h3>
             <div className="space-y-2 max-h-[250px] overflow-y-auto pr-1">
               {leavesLogs.map((item: any) => (
-                <div key={item.id} className="p-3 bg-[#FAF9F6] border border-[#F5F1EA] rounded-xl flex items-center justify-between text-xs">
+                <div key={item.id} className="p-3 bg-[#FAF9F6] border border-[#F5F1EA] rounded-xl flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between">
                   <div>
                     <p className="font-black text-[#2D2D2D]">{item.leave_type}</p>
                     <p className="text-[9px] text-gray-400 font-bold mt-0.5">{item.start_date} to {item.end_date}</p>
@@ -131,7 +131,7 @@ export default async function StaffDashboard() {
 
         {/* RIGHT COMPARTMENT */}
         <div className="lg:col-span-8 space-y-6">
-          <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
+          <div className="bg-white p-5 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm">
             <h3 className="font-black text-[#2D2D2D] text-lg mb-6">Leave Exemptions Desk</h3>
             
             <form action={handleLeaveAction} className="space-y-4">
@@ -175,7 +175,7 @@ export default async function StaffDashboard() {
           </div>
 
           {/* REALTIME CONTAINER */}
-          <div className="bg-white p-2 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm overflow-hidden">
+          <div className="bg-white p-2 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm overflow-hidden">
             <RealtimeCalendarWrapper 
               initialLogs={attendanceLogs}
               initialLeaves={leavesLogs}

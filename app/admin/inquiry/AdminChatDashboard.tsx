@@ -33,9 +33,9 @@ export function AdminChatDashboard({ profiles = [], currentUserId }: AdminChatDa
   });
 
   return (
-    <div className="grid grid-cols-12 gap-6">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
       {/* LEFT SIDEBAR */}
-      <div className="col-span-4 space-y-4">
+      <div className="lg:col-span-4 space-y-4">
         <input 
           type="text"
           placeholder="Search name or ID (e.g. Gaurav)..."
@@ -44,7 +44,7 @@ export function AdminChatDashboard({ profiles = [], currentUserId }: AdminChatDa
           className="w-full p-4 bg-white border border-[#F5F1EA] rounded-2xl text-xs font-bold outline-none focus:ring-1 focus:ring-[#7A8F66]"
         />
 
-        <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2">
+        <div className="space-y-2 max-h-[320px] overflow-y-auto pr-2 lg:max-h-[600px]">
           {filteredProfiles.length > 0 ? (
             filteredProfiles.map((profile) => (
               <button
@@ -76,7 +76,7 @@ export function AdminChatDashboard({ profiles = [], currentUserId }: AdminChatDa
       </div>
 
       {/* RIGHT CHAT WINDOW */}
-      <div className="col-span-8">
+      <div className="lg:col-span-8 min-w-0">
         {selectedUser ? (
           /* ✅ 3. Optional chaining ensures safe execution even during unselected rendering iterations */
           <ChatWindow
@@ -87,7 +87,7 @@ export function AdminChatDashboard({ profiles = [], currentUserId }: AdminChatDa
             isAdminMode={true}
           />
         ) : (
-          <div className="p-20 text-center border-2 border-dashed border-[#F5F1EA] rounded-[3rem] bg-white text-gray-400 text-[10px] font-bold uppercase tracking-widest leading-relaxed">
+          <div className="p-8 sm:p-12 lg:p-20 text-center border-2 border-dashed border-[#F5F1EA] rounded-[2rem] lg:rounded-[3rem] bg-white text-gray-400 text-[10px] font-bold uppercase tracking-widest leading-relaxed">
             Select a profile from the sidebar <br /> to initiate a console connection.
           </div>
         )}

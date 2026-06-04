@@ -11,11 +11,11 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
   const isActive = (path: string) => pathname === path;
 
   return (
-    <div className="flex min-h-screen">
+    <div className="min-h-screen lg:flex">
       
       {/* SIDEBAR NAVIGATION */}
-      <aside className="w-72 bg-white border-r border-[#F5F1EA] fixed top-0 bottom-0 left-0 flex flex-col z-30">
-        <div className="p-8">
+      <aside className="bg-white border-b border-[#F5F1EA] flex flex-col z-30 lg:fixed lg:inset-y-0 lg:left-0 lg:w-72 lg:border-b-0 lg:border-r">
+        <div className="p-4 sm:p-6 lg:p-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-[#7A8F66] rounded-2xl flex items-center justify-center text-white font-black shadow-lg shadow-[#7A8F66]/20">
               F
@@ -27,8 +27,8 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
           </div>
         </div>
         
-        <nav className="flex-1 px-4 space-y-2">
-          <div className="text-[10px] font-black text-gray-300 uppercase tracking-[0.2em] px-4 mb-4">Workspace</div>
+        <nav className="flex gap-2 overflow-x-auto px-3 pb-3 sm:px-4 lg:flex-1 lg:flex-col lg:space-y-2 lg:overflow-x-hidden lg:overflow-y-auto lg:pb-0">
+          <div className="hidden text-[10px] font-black text-gray-300 uppercase tracking-[0.2em] px-4 mb-4 lg:block">Workspace</div>
           
           <SidebarNavItem 
             href="/staff/dashboard" 
@@ -48,7 +48,7 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
         />
            </nav>
 
-        <div className="p-6 border-t border-[#F5F1EA]">
+        <div className="p-3 sm:p-4 lg:p-6 border-t border-[#F5F1EA]">
           <Link href="/login" className="flex items-center justify-between p-4 rounded-2xl bg-red-50 text-red-600 font-black text-[10px] uppercase tracking-widest hover:bg-red-100 transition-all">
             Logout <span>🚪</span>
           </Link>
@@ -56,8 +56,8 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 pl-72">
-        <header className="h-20 bg-white/80 backdrop-blur-md border-b border-[#F5F1EA] flex items-center justify-between px-10 sticky top-0 z-20">
+      <div className="flex-1 min-w-0 lg:pl-72">
+        <header className="min-h-16 lg:min-h-20 bg-white/80 backdrop-blur-md border-b border-[#F5F1EA] flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-10 sticky top-0 z-20">
           <div className="flex items-center gap-3">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">System Cloud Synced</span>
@@ -67,7 +67,7 @@ export default function StaffLayout({ children }: { children: React.ReactNode })
           </div>
         </header>
 
-        <main className="p-10 min-h-[calc(100vh-80px)]">
+        <main className="p-4 sm:p-6 lg:p-10 min-h-[calc(100vh-80px)]">
           {children}
         </main>
       </div>
@@ -79,7 +79,7 @@ function SidebarNavItem({ href, label, icon, active }: { href: string; label: st
   return (
     <Link 
       href={href} 
-      className={`flex items-center gap-4 px-4 py-4 rounded-2xl text-sm font-bold transition-all duration-300 group ${
+      className={`flex shrink-0 items-center gap-3 px-4 py-3 lg:py-4 rounded-2xl text-xs sm:text-sm font-bold transition-all duration-300 group lg:shrink ${
         active 
         ? "bg-[#FAF9F6] text-[#7A8F66] shadow-sm border border-[#F5F1EA]" 
         : "text-gray-400 hover:text-[#2D2D2D] hover:bg-[#FAF9F6]/50"
@@ -88,7 +88,7 @@ function SidebarNavItem({ href, label, icon, active }: { href: string; label: st
       <span className={`text-lg transition-transform group-hover:scale-110 ${active ? "opacity-100" : "opacity-50"}`}>
         {icon}
       </span>
-      {label}
+      <span className="whitespace-nowrap">{label}</span>
     </Link>
   );
 }

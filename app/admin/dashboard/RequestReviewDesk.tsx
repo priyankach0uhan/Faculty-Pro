@@ -16,8 +16,8 @@ export default async function RequestReviewDesk() {
   if (!requests || requests.length === 0) return null;
 
   return (
-    <div className="bg-white p-8 rounded-[2.5rem] border border-[#F5F1EA] shadow-sm mt-8 animate-in fade-in slide-in-from-top-4 duration-500">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] border border-[#F5F1EA] shadow-sm mt-8 animate-in fade-in slide-in-from-top-4 duration-500">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-6">
         <h3 className="font-black text-[#2D2D2D] text-lg flex items-center gap-2">
           📥 Calendar Correction Queue 
         </h3>
@@ -50,17 +50,17 @@ export default async function RequestReviewDesk() {
                 </div>
               </div>
 
-              <div className="flex gap-2 items-center">
+              <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:items-center">
                 {/* Rejection Form */}
                 <form action={handleDeny}>
-                  <button type="submit" className="px-5 py-2.5 bg-white border border-red-100 text-red-600 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-red-50 transition active:scale-95">
+                  <button type="submit" className="w-full px-5 py-2.5 bg-white border border-red-100 text-red-600 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-red-50 transition active:scale-95 sm:w-auto">
                     Deny
                   </button>
                 </form>
                 
                 {/* Approval Form */}
                 <form action={handleApprove}>
-                  <button type="submit" className="px-5 py-2.5 bg-[#2D2D2D] text-white rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition shadow-lg shadow-black/5 active:scale-95">
+                  <button type="submit" className="w-full px-5 py-2.5 bg-[#2D2D2D] text-white rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-black transition shadow-lg shadow-black/5 active:scale-95 sm:w-auto">
                     Approve & Sync
                   </button>
                 </form>

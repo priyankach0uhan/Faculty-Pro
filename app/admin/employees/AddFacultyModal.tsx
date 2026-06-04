@@ -19,14 +19,14 @@ export default function AddFacultyModal() {
   }
 
   if (!isOpen) return (
-    <button onClick={() => setIsOpen(true)} className="bg-[#7A8F66] text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow-lg shadow-[#7A8F66]/20 hover:bg-[#6b7d5a] transition">
+    <button onClick={() => setIsOpen(true)} className="w-full bg-[#7A8F66] text-white px-6 py-2.5 rounded-xl font-bold text-xs shadow-lg shadow-[#7A8F66]/20 hover:bg-[#6b7d5a] transition sm:w-auto">
       + Add New Faculty
     </button>
   );
 
   return (
-    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-white w-full max-w-md rounded-[2.5rem] border border-[#F5F1EA] shadow-2xl p-8">
+    <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4">
+      <div className="bg-white w-full max-w-md max-h-[92vh] overflow-y-auto rounded-[1.5rem] sm:rounded-[2.5rem] border border-[#F5F1EA] shadow-2xl p-5 sm:p-8">
         {registeredId ? (
           <div className="text-center space-y-6 py-4">
             <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-2xl font-black">✓</div>

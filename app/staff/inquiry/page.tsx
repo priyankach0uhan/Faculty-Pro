@@ -41,7 +41,7 @@ export default async function StaffInquiryPage() {
   }
 
   return (
-    <div className="w-full max-w-[1300px] mx-auto p-4">
+    <div className="w-full max-w-[1300px] mx-auto">
       <h2 className="text-xl font-black text-[#2D2D2D] tracking-tight mb-6">
         Inquiry & Reply Desk
       </h2>

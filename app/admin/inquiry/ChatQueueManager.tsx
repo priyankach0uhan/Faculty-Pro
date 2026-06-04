@@ -34,12 +34,12 @@ export function ChatQueueManager({ uniqueChannels, adminUserId }: { uniqueChanne
           </button>
         ))}
         {uniqueChannels.length === 0 && (
-          <p className="text-center text-xs italic font-bold text-gray-300 p-8">No inquiries received yet.</p>
+          <p className="text-center text-xs italic font-bold text-gray-300 p-6 sm:p-8">No inquiries received yet.</p>
         )}
       </div>
 
       {/* Right Interaction Window Box */}
-      <div className="lg:col-span-8">
+      <div className="lg:col-span-8 min-w-0">
         {selectedChannel ? (
    <ChatWindow
   currentUserId={adminUserId}
@@ -49,7 +49,7 @@ export function ChatQueueManager({ uniqueChannels, adminUserId }: { uniqueChanne
   isAdminMode={true}
 />
         ) : (
-          <div className="p-12 text-center border border-dashed border-[#F5F1EA] rounded-[2.5rem] bg-white text-xs text-gray-400 font-bold">
+          <div className="p-8 sm:p-12 text-center border border-dashed border-[#F5F1EA] rounded-[2rem] sm:rounded-[2.5rem] bg-white text-xs text-gray-400 font-bold">
             Select an open faculty stream thread to begin diagnostic troubleshooting.
           </div>
         )}

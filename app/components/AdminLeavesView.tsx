@@ -67,7 +67,7 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
           />
         </div>
 
-        <div className="space-y-2 max-h-[480px] overflow-y-auto pr-1">
+        <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1 lg:max-h-[480px]">
           <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest px-2">Application Logs Queue</p>
           {filteredLeaves.map((item) => {
             const isSelected = selectedLeave?.id === item.id;
@@ -97,10 +97,10 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
       </div>
 
       {/* REACTION VIEWPORT MAPPING OVERVIEW */}
-      <div className="lg:col-span-8">
+      <div className="lg:col-span-8 min-w-0">
         {selectedLeave ? (
-          <div className="bg-white border border-[#F5F1EA] rounded-[2rem] overflow-hidden shadow-sm flex flex-col min-h-[480px]">
-            <div className="p-6 border-b border-[#F5F1EA] bg-[#FAF9F6] flex justify-between items-start">
+          <div className="bg-white border border-[#F5F1EA] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-sm flex flex-col min-h-[420px] lg:min-h-[480px]">
+            <div className="p-4 sm:p-6 border-b border-[#F5F1EA] bg-[#FAF9F6] flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-start">
               <div>
                 <span className="bg-[#FFF9E6] text-[#9B7E5A] font-black text-[9px] px-2 py-0.5 rounded-md border border-[#F5F1EA] uppercase">
                   {selectedLeave.leave_type}
@@ -111,7 +111,7 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
                 </p>
               </div>
 
-              <div className="flex items-center gap-2 bg-white px-3 py-2 border border-[#F5F1EA] rounded-xl font-mono text-[11px] font-bold text-[#2D2D2D]">
+              <div className="flex flex-wrap items-center gap-2 bg-white px-3 py-2 border border-[#F5F1EA] rounded-xl font-mono text-[11px] font-bold text-[#2D2D2D]">
                 <Calendar className="w-3.5 h-3.5 text-[#9B7E5A]" />
                 <span>{selectedLeave.start_date}</span>
                 <span className="text-gray-300">to</span>
@@ -119,7 +119,7 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
               </div>
             </div>
 
-            <div className="flex-1 p-6 space-y-6">
+            <div className="flex-1 p-4 sm:p-6 space-y-6">
               <div className="space-y-2">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Reason Statement / Justification History</p>
                 <div className="p-4 bg-[#FAF9F6] rounded-2xl border border-[#F5F1EA] text-xs text-[#2D2D2D] font-medium leading-relaxed">
@@ -130,11 +130,11 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
               <div className="space-y-2">
                 <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Audit Tracking Logs</p>
                 <div className="border border-[#F5F1EA] rounded-2xl divide-y divide-[#F5F1EA] text-xs">
-                  <div className="p-3.5 flex justify-between items-center bg-[#FAF9F6]/20">
+                  <div className="p-3.5 flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-center bg-[#FAF9F6]/20">
                     <span className="text-gray-400 font-medium">Filing Timestamp</span>
                     <span className="font-mono text-gray-500 font-bold">{new Date(selectedLeave.created_at).toLocaleString()}</span>
                   </div>
-                  <div className="p-3.5 flex justify-between items-center">
+                  <div className="p-3.5 flex flex-col gap-1 sm:flex-row sm:justify-between sm:items-center">
                     <span className="text-gray-400 font-medium">Settlement Status</span>
                     <div className="flex items-center gap-1.5 font-bold capitalize">
                       <span className={
@@ -147,20 +147,20 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
               </div>
             </div>
 
-            <div className="p-4 border-t border-[#F5F1EA] bg-[#FAF9F6] flex justify-end gap-3">
+            <div className="p-4 border-t border-[#F5F1EA] bg-[#FAF9F6] flex flex-col justify-end gap-3 sm:flex-row">
               {selectedLeave.status === "pending" ? (
                 <>
                   <button
                     onClick={() => handleAction(selectedLeave.id, "rejected")}
                     disabled={isProcessing}
-                    className="px-5 py-3 border border-red-200 bg-red-50 text-red-600 font-black text-xs uppercase tracking-widest rounded-xl text-center hover:bg-red-100/70 transition"
+                    className="w-full px-5 py-3 border border-red-200 bg-red-50 text-red-600 font-black text-xs uppercase tracking-widest rounded-xl text-center hover:bg-red-100/70 transition sm:w-auto"
                   >
                     Deny Request
                   </button>
                   <button
                     onClick={() => handleAction(selectedLeave.id, "approved")}
                     disabled={isProcessing}
-                    className="px-5 py-3 bg-[#7A8F66] text-white font-black text-xs uppercase tracking-widest rounded-xl text-center hover:bg-[#6b7d5a] shadow-md transition"
+                    className="w-full px-5 py-3 bg-[#7A8F66] text-white font-black text-xs uppercase tracking-widest rounded-xl text-center hover:bg-[#6b7d5a] shadow-md transition sm:w-auto"
                   >
                     Approve Request
                   </button>
@@ -173,7 +173,7 @@ export function AdminLeavesView({ leavesData, adminUserId }: AdminLeavesViewProp
             </div>
           </div>
         ) : (
-          <div className="p-12 text-center border border-dashed border-[#F5F1EA] rounded-[2.5rem] bg-white text-xs text-gray-400 font-bold">
+          <div className="p-8 sm:p-12 text-center border border-dashed border-[#F5F1EA] rounded-[2rem] sm:rounded-[2.5rem] bg-white text-xs text-gray-400 font-bold">
             Select an active leave item row from the logs list container to run verification checks.
           </div>
         )}

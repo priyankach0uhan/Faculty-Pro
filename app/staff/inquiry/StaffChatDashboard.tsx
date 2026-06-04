@@ -43,7 +43,7 @@ export function StaffChatDashboard({
           <span className="absolute right-4 top-1/2 -translate-y-1/2 opacity-20 group-focus-within:opacity-100 transition-opacity">🔍</span>
         </div>
 
-        <div className="space-y-2 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+        <div className="space-y-2 max-h-[320px] overflow-y-auto pr-2 custom-scrollbar lg:max-h-[500px]">
           {filteredAdmins.length > 0 ? (
             filteredAdmins.map((admin) => (
               <button
@@ -80,9 +80,9 @@ export function StaffChatDashboard({
       </div>
 
       {/* MAIN CHAT AREA */}
-      <div className="lg:col-span-8 h-full min-h-[550px]">
+      <div className="lg:col-span-8 h-full min-h-[420px] lg:min-h-[550px] min-w-0">
         {selectedAdmin ? (
-          <div className="h-full bg-white border border-[#F5F1EA] rounded-[2.5rem] overflow-hidden shadow-sm">
+          <div className="h-full bg-white border border-[#F5F1EA] rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[2.5rem] overflow-hidden shadow-sm">
              <ChatWindow
               currentUserId={currentUserId}
               targetUserId={selectedAdmin.id}
@@ -92,7 +92,7 @@ export function StaffChatDashboard({
             />
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center h-full p-20 text-center border-2 border-dashed border-[#F5F1EA] rounded-[3rem] bg-white group hover:border-[#7A8F66]/20 transition-colors">
+          <div className="flex flex-col items-center justify-center h-full p-8 sm:p-12 lg:p-20 text-center border-2 border-dashed border-[#F5F1EA] rounded-[2rem] lg:rounded-[3rem] bg-white group hover:border-[#7A8F66]/20 transition-colors">
             <div className="w-16 h-16 bg-[#FAF9F6] rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <span className="text-2xl grayscale">💬</span>
             </div>

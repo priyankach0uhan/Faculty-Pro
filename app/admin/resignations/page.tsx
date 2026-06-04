@@ -36,7 +36,7 @@ export default async function AdminResignationsPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <div className="w-full max-w-[1200px] mx-auto p-4 space-y-6">
+    <div className="w-full max-w-[1200px] mx-auto space-y-6">
       <div>
         <h1 className="text-2xl font-black text-[#2D2D2D] tracking-tight">Resignation Desk Control Center</h1>
         <p className="text-xs text-gray-400 font-bold uppercase tracking-wider mt-0.5">
@@ -44,14 +44,14 @@ export default async function AdminResignationsPage() {
         </p>
       </div>
 
-      <div className="bg-white border border-[#F5F1EA] rounded-[2rem] overflow-hidden shadow-sm">
-        <div className="p-6 bg-[#FAF9F6] border-b border-[#F5F1EA]">
+      <div className="bg-white border border-[#F5F1EA] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-sm">
+        <div className="p-4 sm:p-6 bg-[#FAF9F6] border-b border-[#F5F1EA]">
           <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Active Processing Queue</p>
         </div>
         
         <div className="divide-y divide-[#F5F1EA]">
           {resignations?.map((item) => (
-            <div key={item.id} className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div key={item.id} className="p-4 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="space-y-1">
                 <h4 className="font-black text-sm text-[#2D2D2D]">{item.profiles?.full_name || "Unknown Staff"}</h4>
                 <p className="text-[10px] text-gray-400 font-bold font-mono uppercase">
@@ -69,8 +69,8 @@ export default async function AdminResignationsPage() {
               </div>
 
               {/* DYNAMIC DROP-DOWN SELECT ELEMENT DESK */}
-              <div className="flex items-center gap-3">
-                <form action={handleUpdateResignationStatus} className="flex items-end gap-2">
+              <div className="w-full md:w-auto">
+                <form action={handleUpdateResignationStatus} className="flex w-full flex-col gap-2 sm:flex-row sm:items-end md:w-auto">
                   <input type="hidden" name="id" value={item.id} />
                   
                   <div className="flex flex-col space-y-1">
@@ -81,7 +81,7 @@ export default async function AdminResignationsPage() {
                       name="status"
                       key={item.status}
                       defaultValue={item.status || "pending"}
-                      className={`text-xs font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border bg-white focus:outline-none cursor-pointer transition-all ${
+                      className={`w-full text-xs font-black uppercase tracking-wider px-3 py-2.5 rounded-xl border bg-white focus:outline-none cursor-pointer transition-all ${
                         item.status === 'approved' ? 'text-green-700 border-green-200 bg-green-50/30' :
                         item.status === 'rejected' ? 'text-red-700 border-red-200 bg-red-50/30' :
                         item.status === 'on hold' ? 'text-blue-700 border-blue-200 bg-blue-50/30' :
@@ -103,7 +103,7 @@ export default async function AdminResignationsPage() {
                   {item.status !== 'reverted' && (
                     <button 
                       type="submit" 
-                      className="px-4 py-2.5 bg-[#2D2D2D] hover:bg-black text-white rounded-xl text-[10px] font-black uppercase tracking-wider transition-all shadow-sm"
+                      className="w-full px-4 py-2.5 bg-[#2D2D2D] hover:bg-black text-white rounded-xl text-[10px] font-black uppercase tracking-wider transition-all shadow-sm sm:w-auto"
                     >
                       Update
                     </button>

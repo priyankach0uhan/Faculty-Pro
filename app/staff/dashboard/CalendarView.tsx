@@ -53,8 +53,8 @@ export function AttendanceCalendar({
   ];
 
   return (
-    <div className="bg-[#FAF9F6] p-6 rounded-[2rem] border border-[#F5F1EA] w-full text-xs">
-      <div className="flex justify-between items-center mb-6">
+    <div className="bg-[#FAF9F6] p-3 sm:p-6 rounded-[1.5rem] sm:rounded-[2rem] border border-[#F5F1EA] w-full text-xs">
+      <div className="flex justify-between items-center gap-3 mb-6">
         <h4 className="text-[11px] font-black text-[#2D2D2D] uppercase tracking-widest">
           {viewDate.toLocaleString("default", { month: "long", year: "numeric" })}
         </h4>
@@ -70,7 +70,7 @@ export function AttendanceCalendar({
         </div>
       </div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
         {weekdayHeaders.map((day) => (
           <div key={day.id} className="text-[10px] text-center font-black text-gray-300 py-2">
             {day.label}
@@ -78,7 +78,7 @@ export function AttendanceCalendar({
         ))}
         
         {Array.from({ length: blankDays }).map((_, i) => (
-          <div key={`blank-${i}`} className="h-10 w-full" />
+          <div key={`blank-${i}`} className="aspect-square min-h-8 w-full" />
         ))}
 
         {Array.from({ length: daysInMonth }).map((_, i) => {
@@ -127,7 +127,7 @@ export function AttendanceCalendar({
           return (
             <div 
               key={`day-${dateStr}`} 
-              className={`h-10 rounded-xl flex items-center justify-center text-[11px] font-black border transition-all ${tileStyles}`}
+              className={`aspect-square min-h-8 rounded-lg sm:rounded-xl flex items-center justify-center text-[10px] sm:text-[11px] font-black border transition-all ${tileStyles}`}
               title={log ? `Status: ${log.status}` : approvedLeave ? `Approved Leave: ${approvedLeave.leave_type}` : undefined}
             >
               {dayNum.toString().padStart(2, '0')}
@@ -137,7 +137,7 @@ export function AttendanceCalendar({
       </div>
       
       {/* UPDATE LEGEND LABELS TO MATCH APP CONSTANTS */}
-      <div className="mt-8 pt-5 border-t border-[#F5F1EA] flex justify-center gap-6">
+      <div className="mt-6 sm:mt-8 pt-5 border-t border-[#F5F1EA] flex flex-wrap justify-center gap-3 sm:gap-6">
         <div className="flex items-center gap-2">
           <span className="w-2.5 h-2.5 rounded-full bg-[#7A8F66]"></span>
           <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest">Present</span>

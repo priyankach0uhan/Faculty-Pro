@@ -37,7 +37,7 @@ export default async function AdminInquiryPage() {
     .order("full_name", { ascending: true });
 
   return (
-    <div className="p-4">
+    <div className="w-full">
       {/* 🔒 DATA ISOLATION: 
           Passing the active session's exact profile UUID (activeUserId) 
           to identify the sender in the live chat engine. 

@@ -112,9 +112,9 @@ export function ChatWindow({ currentUserId, targetUserId, targetEmployeeId, targ
   };
 
   return (
-    <div className="flex flex-col h-[520px] bg-white border border-[#F5F1EA] rounded-[2rem] overflow-hidden shadow-sm transition-all">
+    <div className="flex flex-col h-[70vh] min-h-[420px] max-h-[620px] bg-white border border-[#F5F1EA] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden shadow-sm transition-all">
       {/* Chat Header */}
-      <div className="p-4 border-b border-[#F5F1EA] bg-[#FAF9F6] flex justify-between items-center shadow-sm">
+      <div className="p-4 border-b border-[#F5F1EA] bg-[#FAF9F6] flex flex-wrap justify-between items-center gap-3 shadow-sm">
         <div className="flex flex-col">
           <h4 className="font-black text-[#2D2D2D] text-xs uppercase tracking-wider">
             {isAdminMode ? `Staff Terminal: ${targetName}` : `Admin Support: ${targetName}`}
@@ -127,7 +127,7 @@ export function ChatWindow({ currentUserId, targetUserId, targetEmployeeId, targ
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto p-5 space-y-4 bg-[#FAF9F6]/20">
+      <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4 bg-[#FAF9F6]/20">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center opacity-30 flex-col space-y-2">
             <span className="text-2xl">✉️</span>
@@ -138,7 +138,7 @@ export function ChatWindow({ currentUserId, targetUserId, targetEmployeeId, targ
             const isOwnMessage = msg.sender_id === currentUserId;
             return (
               <div key={msg.id} className={`flex ${isOwnMessage ? "justify-end" : "justify-start"} animate-in fade-in slide-in-from-bottom-2 duration-300`}>
-                <div className={`max-w-[80%] p-4 rounded-2xl text-xs leading-relaxed shadow-sm ${
+                <div className={`max-w-[88%] sm:max-w-[80%] p-3 sm:p-4 rounded-2xl text-xs leading-relaxed shadow-sm ${
                   isOwnMessage 
                     ? "bg-[#2D2D2D] text-white font-medium rounded-tr-none" 
                     : "bg-white border border-[#F5F1EA] text-[#2D2D2D] font-medium rounded-tl-none"
@@ -157,18 +157,18 @@ export function ChatWindow({ currentUserId, targetUserId, targetEmployeeId, targ
       </div>
 
       {/* Input Area */}
-      <form onSubmit={handleSendMessage} className="p-4 border-t border-[#F5F1EA] bg-white flex gap-3">
+      <form onSubmit={handleSendMessage} className="p-3 sm:p-4 border-t border-[#F5F1EA] bg-white flex flex-col gap-3 sm:flex-row">
         <input
           type="text"
           value={inputMessage}
           onChange={(e) => setInputMessage(e.target.value)}
           placeholder={isAdminMode ? "Type a reply to staff member..." : "Ask your question to administrator..."}
-          className="flex-1 p-4 bg-[#FAF9F6] border border-[#F5F1EA] rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#7A8F66]/10 focus:border-[#7A8F66] transition-all"
+          className="min-w-0 flex-1 p-4 bg-[#FAF9F6] border border-[#F5F1EA] rounded-2xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-[#7A8F66]/10 focus:border-[#7A8F66] transition-all"
         />
         <button 
           type="submit" 
           disabled={!inputMessage.trim()}
-          className="px-6 bg-[#7A8F66] text-white font-black text-[10px] uppercase tracking-widest rounded-2xl hover:bg-[#6b7d5a] transition-all active:scale-95 disabled:opacity-50 disabled:grayscale"
+          className="px-6 py-4 sm:py-0 bg-[#7A8F66] text-white font-black text-[10px] uppercase tracking-widest rounded-2xl hover:bg-[#6b7d5a] transition-all active:scale-95 disabled:opacity-50 disabled:grayscale"
         >
           Send
         </button>
